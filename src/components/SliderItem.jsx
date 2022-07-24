@@ -14,6 +14,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
 export default function SliderItem({ type }) {
+  const baseUrlForMovie = "https://image.tmdb.org/t/p/original";
   const [berita, setBerita] = useState([]);
   useEffect(() => {
     const fetchDataBerita = async () => {
@@ -21,11 +22,12 @@ export default function SliderItem({ type }) {
         // Gunakan instance tmdb di sini
         const responseDariNews = await news.get(
           // Nah di sini kita tidak perlu menuliskan terlalu panjang lagi
-          `${"/top-headlines?country=id&category=" + type}`
+          // `${"/top-headlines?country=id&category=" + type}`
+          `${"/movie/popular"}`
         );
         // Jangan lupa set statenya
         // Perhatikan di sini responseDariTMDB ada .data (response schema axios)
-        setBerita(responseDariNews.data.articles);
+        setBerita(responseDariNews.data.results);
       } catch (err) {
         console.log(err);
       }
@@ -53,14 +55,14 @@ export default function SliderItem({ type }) {
                   component="img"
                   alt="green iguana"
                   height="140"
-                  image={berita.urlToImage}
+                  image={`${baseUrlForMovie}${berita.poster_path}`}
                 />
                 <CardContent sx={{height:'10em'}}>
                   <Typography gutterBottom component="div">
                   {berita.title}
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                  {berita.description}
+                  {berita.overview}
                   </Typography>
                 </CardContent>
                 <CardActions>

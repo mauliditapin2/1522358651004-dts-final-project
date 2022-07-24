@@ -5,18 +5,18 @@ import { useEffect, useState } from "react";
 
 export default function CarouselNews() {
   const [berita, setBerita] = useState([]);
-
+  const baseUrlForMovie = "https://image.tmdb.org/t/p/original";
   useEffect(() => {
     const fetchDataBerita = async () => {
       try {
         // Gunakan instance tmdb di sini
         const responseDariNews = await news.get(
           // Nah di sini kita tidak perlu menuliskan terlalu panjang lagi
-          "/top-headlines"
+          "/movie/popular"
         );
         // Jangan lupa set statenya
         // Perhatikan di sini responseDariTMDB ada .data (response schema axios)
-        setBerita(responseDariNews.data.articles);
+        setBerita(responseDariNews.data.results);
       } catch (err) {
         console.log(err);
       }
@@ -34,7 +34,7 @@ export default function CarouselNews() {
               <CardMedia
                 component="img"
                 sx={{ width: '100%',marginRight:'-100%' , objectFit:'cover', objectPosition:' center', height:'25em'}}
-                image={berita.urlToImage}
+                image={`${baseUrlForMovie}${berita.backdrop_path}`}
                 alt="Live from space album cover"
               />
               <Box sx={{ display: "flex", flexDirection: "column", maxWidth:'50%', paddingTop:'10em',backgroundColor: 'rgba(0, 0, 0, 0.8)', color:'white', borderTopRightRadius:'15em'  }}>
