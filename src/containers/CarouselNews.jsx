@@ -1,5 +1,13 @@
 import Carousel from "react-material-ui-carousel";
-import { Paper, Button, Typography, Card, Box, CardContent, CardMedia } from "@mui/material";
+import {
+  Paper,
+  Button,
+  Typography,
+  Card,
+  Box,
+  CardContent,
+  CardMedia,
+} from "@mui/material";
 import news from "../apis/news";
 import { useEffect, useState } from "react";
 
@@ -30,17 +38,36 @@ export default function CarouselNews() {
         return (
           <Paper>
             <Card sx={{ display: "flex" }}>
-              
               <CardMedia
                 component="img"
-                sx={{ width: '100%',marginRight:'-100%' , objectFit:'cover', objectPosition:' center', height:'25em'}}
+                sx={{
+                  width: "100%",
+                  marginRight: "-100%",
+                  objectFit: "cover",
+                  objectPosition: " center",
+                  height: "25em",
+                }}
                 image={`${baseUrlForMovie}${berita.backdrop_path}`}
                 alt="Live from space album cover"
               />
-              <Box sx={{ display: "flex", flexDirection: "column", maxWidth:'50%', paddingTop:'10em',backgroundColor: 'rgba(0, 0, 0, 0.8)', color:'white', borderTopRightRadius:'15em'  }}>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  maxWidth: "50%",
+                  paddingTop: "5em",
+                  backgroundColor: "rgba(0, 0, 0, 0.8)",
+                  color: "white",
+                  height:'20em'
+                }}
+              >
                 <CardContent sx={{ flex: "1 0 auto" }}>
-                  
-                  <Typography variant="h5" sx={{marginBottom: '1em'}}>{berita.title}</Typography>
+                  <Typography variant="h5" sx={{ marginBottom: "1em" }}>
+                    {berita.title}
+                  </Typography>
+                  <Typography>
+                    {berita.overview.substring(0, 250)}...
+                  </Typography>
                   <Button variant="outlined">Selengkapnya</Button>
                 </CardContent>
               </Box>

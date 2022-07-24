@@ -190,14 +190,17 @@ export default function NavBar() {
           >
             {/* <MenuIcon /> */}
           </IconButton>
+          <Link to="/">
           <Typography
             variant="h6"
             noWrap
             component="div"
-            sx={{ display: { xs: "none", sm: "block" } }}
+            sx={{textDecorationLine:'none', color:'white', textDecoration:'none', display: { xs: "none", sm: "block" } }}
           >
             News On Fire
           </Typography>
+          </Link>
+          
           <Search>
             <SearchIconWrapper>
               <SearchIcon />

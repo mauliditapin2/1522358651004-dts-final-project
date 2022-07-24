@@ -2,7 +2,7 @@ import React from "react";
 import NavBar from "../containers/NavBar";
 import CarouselNews from "../containers/CarouselNews";
 
-import { Box } from "@mui/material";
+import { Box, Paper } from "@mui/material";
 import SliderTab from "../components/SliderTab";
 import Footer from "../components/Footer";
 export default function HomePage() {
@@ -10,11 +10,13 @@ export default function HomePage() {
     <div>
       <NavBar />
       <CarouselNews />
-      <Box>
-        <SliderTab />
-      </Box>
-
-      <Footer/>
+      <br/><br/>
+      <Paper elevation={3}>
+        <Box>
+          <SliderTab />
+        </Box>
+      </Paper>
+      <Footer />
     </div>
   );
 }

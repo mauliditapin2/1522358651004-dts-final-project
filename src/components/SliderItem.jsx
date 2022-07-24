@@ -13,6 +13,9 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
+import { Link } from "react-router-dom";
+import CardItem from "./CardItem";
+
 export default function SliderItem({ type }) {
   const baseUrlForMovie = "https://image.tmdb.org/t/p/original";
   const [berita, setBerita] = useState([]);
@@ -50,25 +53,7 @@ export default function SliderItem({ type }) {
         {berita.map((berita) => {
           return (
             <SwiperSlide key={berita.index}>
-              <Card sx={{ maxWidth: 345 }}>
-                <CardMedia
-                  component="img"
-                  alt="green iguana"
-                  height="140"
-                  image={`${baseUrlForMovie}${berita.poster_path}`}
-                />
-                <CardContent sx={{height:'10em'}}>
-                  <Typography gutterBottom component="div">
-                  {berita.title}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                  {berita.overview}
-                  </Typography>
-                </CardContent>
-                <CardActions>
-                  <Button size="small">Selengkapnya</Button>
-                </CardActions>
-              </Card>
+              <CardItem berita={berita}/>
             </SwiperSlide>
           );
         })}
