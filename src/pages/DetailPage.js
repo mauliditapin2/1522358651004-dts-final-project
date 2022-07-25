@@ -45,8 +45,7 @@ export default function DetailPage() {
     <>
       <NavBar />
       <div>
-        <Paper>
-          <Card sx={{}}>
+        <Paper sx={{backgroundColor:'black', height:'auto'}}>
             <CardMedia
               component="img"
               sx={{
@@ -67,40 +66,42 @@ export default function DetailPage() {
                 borderTopRightRadius: "15em",
               }}
             >
-              <CardContent
-                sx={{ textAlign: "left", padding: "1em 5em 0em 5em" }}
-              >
-                <Typography variant="h4">{berita.title}</Typography>
-                <Typography variant="body1">{berita.backdrop_path}</Typography>
-                <Typography variant="body1">
-                  Penulis : {berita.title}
-                </Typography>
-                <br />
-                <br />
-                <Typography variant="subtile2">
-                  {berita.overview}
-                  {berita.overview}
-                  {berita.overview}
-                  {berita.overview}
-                </Typography>
-              </CardContent>
-              <CardContent
-                sx={{ textAlign: "left", padding: "1em 5em 0em 5em" }}
-              ></CardContent>
+              <Paper elevation={3} sx={{ margin: "1em" }}>
+                <CardContent
+                  sx={{ textAlign: "left", padding: "1em 5em 0em 5em" }}
+                >
+                  <Typography variant="h4">{berita.title}</Typography>
+                  <Typography variant="body1">
+                    {berita.backdrop_path}
+                  </Typography>
+                  <Typography variant="body1">
+                    Penulis : {berita.title}
+                  </Typography>
+                  <br />
+                  <br />
+
+                  <Typography variant="subtile2">
+                    {berita.overview}
+                    {berita.overview}
+                    {berita.overview}
+                    {berita.overview}
+                  </Typography>
+                </CardContent>
+              </Paper>
             </Box>
-          </Card>
+          <Paper elevation={3} sx={{ padding: "2em", margin: "1em 1em 1em 1em" }}>
+            <Divider />
+            <Box>
+              <Typography variant="h5">TERPOPULER</Typography>
+            </Box>
+            <Divider />
+            <br />
+            <br />
+            <SliderItem />
+          </Paper>
+          <Footer />
         </Paper>
-        <Paper sx={{ padding: "2em" }}>
-          <Divider />
-          <Box>
-            <Typography variant="h5">TERPOPULER</Typography>
-          </Box>
-          <Divider />
-          <br />
-          <br />
-          <SliderItem />
-        </Paper>
-        <Footer />
+        
       </div>
     </>
   );

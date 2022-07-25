@@ -40,8 +40,19 @@ export default function SliderItem({ type }) {
   return (
     <>
       <Swiper
-        slidesPerView={3}
-        spaceBetween={30}
+      breakpoints={{
+
+        0: {
+          slidesPerView: 2,
+        },
+        
+        600: {
+          slidesPerView: 5,
+        },
+
+        }}
+
+        spaceBetween={10}
         slidesPerGroup={3}
         loop={true}
         autoplay

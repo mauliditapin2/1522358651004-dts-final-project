@@ -3,7 +3,6 @@ import React from "react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import { Pagination, Navigation, Autoplay } from "swiper";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -24,7 +23,7 @@ export default function CardItem(props) {
                   height="140"
                   image={`${baseUrlForMovie}${props.berita.poster_path}`}
                 />
-                <CardContent sx={{height:'7em'}}>
+                <CardContent sx={{height:'auto'}}>
                   <Typography gutterBottom component="div">
                   {props.berita.title}
                   </Typography>
