@@ -17,6 +17,7 @@ import {
 import CardItem from "../components/CardItem";
 import SliderItem from "../components/SliderItem";
 import Footer from "../components/Footer";
+import CardDetail from "../components/CardDetail";
 
 export default function DetailPage() {
   const baseUrlForMovie = "https://image.tmdb.org/t/p/original";
@@ -53,61 +54,17 @@ export default function DetailPage() {
 
   return (
     <>
-      <NavBar />
-      <div>
-        <Paper sx={{ backgroundColor: "black", height: "auto" }}>
-          <CardMedia
-            component="img"
-            sx={{
-              width: "100%",
-              marginRight: "-100%",
-              objectFit: "cover",
-              objectPosition: " center",
-              height: "25em",
-            }}
-            image={berita.content[0]}
-            alt={berita.title}
-          />
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "row",
-              maxWidth: "90%",
-              borderTopRightRadius: "15em",
-            }}
-          >
-            <Paper elevation={3} sx={{ margin: "1em" }}>
-              <CardContent
-                sx={{ textAlign: "left", padding: "1em 5em 0em 5em" }}
-              >
-                <Typography variant="h4">{berita.title}</Typography>
-                <Typography variant="body1">{berita.date}</Typography>
-                <Typography variant="body1">
-                  Penulis : {berita.author}
-                </Typography>
-                <br />
-                <br />
-
-                {rows}
-              </CardContent>
-            </Paper>
+    <NavBar/>
+      <CardDetail berita={berita} />
+      <Paper elevation={3} sx={{ padding: "2em", margin: "1em 1em 1em 1em" }}>
+          <Divider />
+          <Box>
+            <Typography variant="h5">TERPOPULER</Typography>
           </Box>
-          <Paper
-            elevation={3}
-            sx={{ padding: "2em", margin: "1em 1em 1em 1em" }}
-          >
-            <Divider />
-            <Box>
-              <Typography variant="h5">TERPOPULER</Typography>
-            </Box>
-            <Divider />
-            <br />
-            <br />
-            <SliderItem />
-          </Paper>
-          <Footer />
+          <Divider />
+          <SliderItem/>
         </Paper>
-      </div>
+        <Footer/>
     </>
   );
 }

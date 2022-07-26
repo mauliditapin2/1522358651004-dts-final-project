@@ -9,7 +9,7 @@ import CardContent from "../containers/CardContent";
 import CardWithFilter from "../containers/CardWithFilter"
 export default function HomePage() {
   return (
-    <div>
+    <>
       <Paper sx={{backgroundColor:"black"}}>
         <NavBar />
         <CarouselNews />
@@ -25,6 +25,6 @@ export default function HomePage() {
         </Paper>
         <Footer />
       </Paper>
-    </div>
+    </>
   );
 }

@@ -26,9 +26,9 @@ export default function CardContent() {
     <div>
       <Box sx={{ display: "flex", flexWrap: "wrap" }}>
         
-        {berita.map((berita) => {
+        {berita.map((berita, index) => {
           return (
-            <Box sx={{padding:'1em', margin:'auto'}}>
+            <Box key={index} sx={{padding:'1em', margin:'auto'}}>
               <CardItem berita={berita} />
             </Box>
           );

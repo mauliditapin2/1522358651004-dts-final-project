@@ -60,6 +60,7 @@ export default class CardWithFilter extends Component {
   };
 
   render() {
+    let renderA = this.state.arrypost;
     const renderAll = this.state.filterberita.map((berita) => (
       <Box  sx={{padding:'1em', margin:'auto'}}>
         <Card sx={{ maxWidth: 345 }}>
@@ -91,8 +92,8 @@ export default class CardWithFilter extends Component {
         </Card>
       </Box>
     ));
-    const ButtonCek = this.state.arrypost.map((berita) => (
-      <Button  sx={{margin:'1em'}} variant="outlined" value={berita.author} onClick={this.handleClick}>
+    const ButtonCek = this.state.arrypost.map((berita,index) => (
+      <Button key={index} sx={{margin:'1em'}} variant="outlined" value={berita.author} onClick={this.handleClick}>
         {berita.author}
       </Button>
     ));
@@ -105,7 +106,7 @@ export default class CardWithFilter extends Component {
         <Box  sx={{ display: "flex", flexWrap: "wrap" }}>
         {renderAll}
         </Box>
-        
+      <CardContent/>
       </div>
     );
   }
