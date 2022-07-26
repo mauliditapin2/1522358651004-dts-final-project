@@ -1,5 +1,6 @@
 // Di sini kita akan import beberapa fungsi dari package firebase
 import { initializeApp } from "firebase/app";
+import { getFirestore } from 'firebase/firestore';
 
 // Di sini kita akan import beberapa fungsi dari package firebase/auth
 // Firebase ini sebenarnya memungkinkan kita untuk bisa login dengan banyak sekali
@@ -24,12 +25,15 @@ const firebaseConfig = {
   projectId: "berita-4bb59",
   storageBucket: "berita-4bb59.appspot.com",
   messagingSenderId: "776294728142",
-  appId: "1:776294728142:web:1716670caf4bf2b1ad6b9f"
+  appId: "1:776294728142:web:1716670caf4bf2b1ad6b9f",
+  databaseURL: "https://1522358651004-dts-final-project.netlify.app"
+  
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const db = getFirestore(app);
 
 // ---
 // DALAM PEMBELAJARAN INI NAMA FUNGSI DITULIS DALAM BAHASA INDONESIA UNTUK MEMUDAHKAN PEMBELAJARAN
@@ -118,4 +122,5 @@ export {
   loginDenganEmailDanPassword,
   resetPassword,
   keluarDariApps,
+  db
 };

@@ -3,7 +3,8 @@ import React, { useState, useEffect } from "react";
 import news from "../apis/news";
 import CardItem from "../components/CardItem";
 export default function CardContent() {
-  const baseUrlForMovie = "https://image.tmdb.org/t/p/original";
+
+  
   const [berita, setBerita] = useState([]);
   useEffect(() => {
     const fetchDataBerita = async () => {
@@ -26,7 +27,7 @@ export default function CardContent() {
   return (
     <div>
       <Box sx={{ display: "flex", flexWrap: "wrap" }}>
-        {berita.map((berita) => {
+        {berita.filter(vote => vote.vote_average === 7.5).map((berita) => {
           return (
             <Box sx={{padding:'1em', margin:'auto'}}>
               <CardItem berita={berita} />
