@@ -65,7 +65,7 @@ export default function DetailPage() {
               objectPosition: " center",
               height: "25em",
             }}
-            image={berita.title}
+            image={berita.content[0]}
             alt={berita.title}
           />
           <Box

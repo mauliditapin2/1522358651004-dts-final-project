@@ -118,7 +118,7 @@ export default function NavBar() {
           <Link to="/Login">Login</Link>
         )}
       </MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={handleMenuClose}><Link to="/Profil">Profil</Link></MenuItem>
     </Menu>
   );
 

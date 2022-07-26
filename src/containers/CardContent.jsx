@@ -25,6 +25,7 @@ export default function CardContent() {
   return (
     <div>
       <Box sx={{ display: "flex", flexWrap: "wrap" }}>
+        
         {berita.map((berita) => {
           return (
             <Box sx={{padding:'1em', margin:'auto'}}>

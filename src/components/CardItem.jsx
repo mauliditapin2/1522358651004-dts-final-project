@@ -15,29 +15,33 @@ import { Link } from "react-router-dom";
 export default function CardItem(props) {
   return (
     <>
-              <Card sx={{ maxWidth: 345 }}>
-                <CardMedia
-                  component="img"
-                  alt="green iguana"
-                  height="140"
-                  image={props.berita.thumb}
-                />
-                <CardContent sx={{height:'auto'}}>
-                  <Typography gutterBottom component="div">
-                  {props.berita.title}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                  {props.berita.desc.substring(0, 190)}...
-                  </Typography>
-                </CardContent>
-                <CardActions sx={{textAlign:'center', alignContent:'center'}}>
-                  <Button size="small" variant="outlined">                <Link
-                  style={{ textDecoration: "none" }}
-                  to={`/detail/${props.berita.key}`}
-                >Selengkapnya</Link></Button>
-                </CardActions>
-              </Card>
-
+      <Card sx={{ maxWidth: 345 }}>
+        <CardMedia
+          component="img"
+          alt="green iguana"
+          height="140"
+          image={props.berita.thumb}
+        />
+        <CardContent sx={{ height: "auto" }}>
+          <Typography gutterBottom component="div">
+            {props.berita.title}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {props.berita.desc.substring(0, 190)}...
+          </Typography>
+        </CardContent>
+        <CardActions sx={{ textAlign: "center", alignContent: "center" }}>
+          <Button size="small" variant="outlined">
+            {" "}
+            <Link
+              style={{ textDecoration: "none" }}
+              to={`/detail/${props.berita.key}`}
+            >
+              Selengkapnya
+            </Link>
+          </Button>
+        </CardActions>
+      </Card>
     </>
   );
 }

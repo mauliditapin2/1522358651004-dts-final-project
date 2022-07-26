@@ -6,6 +6,7 @@ import { Box, Paper } from "@mui/material";
 import SliderTab from "../components/SliderTab";
 import Footer from "../components/Footer";
 import CardContent from "../containers/CardContent";
+import CardWithFilter from "../containers/CardWithFilter"
 export default function HomePage() {
   return (
     <div>
@@ -20,7 +21,7 @@ export default function HomePage() {
           </Box>
         </Paper>
         <Paper elevation={3} sx={{margin:"1em"}}>
-          <CardContent/>
+          <CardWithFilter/>
         </Paper>
         <Footer />
       </Paper>
