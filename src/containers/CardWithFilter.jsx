@@ -92,9 +92,10 @@ export default class CardWithFilter extends Component {
         </Card>
       </Box>
     ));
-    const ButtonCek = this.state.arrypost.map((berita,index) => (
-      <Button key={index} sx={{margin:'1em'}} variant="outlined" value={berita.author} onClick={this.handleClick}>
-        {berita.author}
+    const Btn = [...new Set(this.state.arrypost.map(item => item.author))];
+    const ButtonCek = Btn.map((berita,index) => (
+      <Button key={index} sx={{margin:'1em'}} variant="outlined" value={berita} onClick={this.handleClick}>
+        {berita}
       </Button>
     ));
     return (
