@@ -20,11 +20,11 @@ export default function CarouselNews() {
         // Gunakan instance tmdb di sini
         const responseDariNews = await news.get(
           // Nah di sini kita tidak perlu menuliskan terlalu panjang lagi
-          "/movie/popular"
+          "/api/games"
         );
         // Jangan lupa set statenya
         // Perhatikan di sini responseDariTMDB ada .data (response schema axios)
-        setBerita(responseDariNews.data.results);
+        setBerita(responseDariNews.data);
       } catch (err) {
         console.log(err);
       }
@@ -34,7 +34,7 @@ export default function CarouselNews() {
 
   return (
     <Carousel>
-      {berita.map((berita) => {
+      {berita.slice(-5).map((berita) => {
         return (
           <Paper>
             <Card sx={{ display: "flex" }}>
@@ -47,8 +47,8 @@ export default function CarouselNews() {
                   objectPosition: " center",
                   height: "25em",
                 }}
-                image={`${baseUrlForMovie}${berita.backdrop_path}`}
-                alt="Live from space album cover"
+                image={berita.thumb}
+                alt={berita.title}
               />
               <Box
                 sx={{
@@ -66,7 +66,7 @@ export default function CarouselNews() {
                     {berita.title}
                   </Typography>
                   <Typography>
-                    {berita.overview.substring(0, 250)}...
+                    {berita.desc.substring(0, 250)}...
                   </Typography>
                   <Button variant="outlined">Selengkapnya</Button>
                 </CardContent>

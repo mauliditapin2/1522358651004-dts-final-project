@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import news from "../apis/news";
 import CardItem from "../components/CardItem";
 export default function CardContent() {
-  const baseUrlForMovie = "https://image.tmdb.org/t/p/original";
   const [berita, setBerita] = useState([]);
   useEffect(() => {
     const fetchDataBerita = async () => {
@@ -12,11 +11,11 @@ export default function CardContent() {
         const responseDariNews = await news.get(
           // Nah di sini kita tidak perlu menuliskan terlalu panjang lagi
           // `${"/top-headlines?country=id&category=" + type}`
-          `${"/movie/popular"}`
+          "/api/games"
         );
         // Jangan lupa set statenya
         // Perhatikan di sini responseDariTMDB ada .data (response schema axios)
-        setBerita(responseDariNews.data.results);
+        setBerita(responseDariNews.data);
       } catch (err) {
         console.log(err);
       }

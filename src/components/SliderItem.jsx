@@ -26,11 +26,11 @@ export default function SliderItem({ type }) {
         const responseDariNews = await news.get(
           // Nah di sini kita tidak perlu menuliskan terlalu panjang lagi
           // `${"/top-headlines?country=id&category=" + type}`
-          `${"/movie/popular"}`
+          "/api/games"
         );
         // Jangan lupa set statenya
         // Perhatikan di sini responseDariTMDB ada .data (response schema axios)
-        setBerita(responseDariNews.data.results);
+        setBerita(responseDariNews.data);
       } catch (err) {
         console.log(err);
       }
@@ -61,9 +61,9 @@ export default function SliderItem({ type }) {
         modules={[Pagination, Navigation, Autoplay]}
         className="mySwiper"
       >
-        {berita.map((berita) => {
+        {berita.slice(-5).map((berita) => {
           return (
-            <SwiperSlide key={berita.index}>
+            <SwiperSlide key={berita.key}>
               <CardItem berita={berita}/>
             </SwiperSlide>
           );

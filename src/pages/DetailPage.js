@@ -22,18 +22,28 @@ export default function DetailPage() {
   const baseUrlForMovie = "https://image.tmdb.org/t/p/original";
   let params = useParams();
   const BeritaID = params.BeritaID;
+  const BeritaID2 = params.BeritaID2;
+  const BeritaID3 = params.BeritaID3;
+  const BeritaID4 = params.BeritaID4;
   const [berita, setBerita] = useState([]);
+  var rows = [];
+  for (var i = 1; i < 13; i++) {
+    // note: we are adding a key prop here to allow react to uniquely identify each
+    // element in this array. see: https://reactjs.org/docs/lists-and-keys.html
+    rows.push(<Typography variant="subtile2"></Typography>);
+  }
+
   useEffect(() => {
     const fetchDataBerita = async () => {
       try {
         // Gunakan instance tmdb di sini
         const responseDariNews = await news.get(
           // Nah di sini kita tidak perlu menuliskan terlalu panjang lagi
-          `/movie/${BeritaID}`
+          `/api/detail/${BeritaID}/${BeritaID2}/${BeritaID3}/${BeritaID4}`
         );
         // Jangan lupa set statenya
         // Perhatikan di sini responseDariTMDB ada .data (response schema axios)
-        setBerita(responseDariNews.data);
+        setBerita(responseDariNews.data.results);
       } catch (err) {
         console.log(err);
       }
@@ -45,51 +55,47 @@ export default function DetailPage() {
     <>
       <NavBar />
       <div>
-        <Paper sx={{backgroundColor:'black', height:'auto'}}>
-            <CardMedia
-              component="img"
-              sx={{
-                width: "100%",
-                marginRight: "-100%",
-                objectFit: "cover",
-                objectPosition: " center",
-                height: "25em",
-              }}
-              image={`${baseUrlForMovie}${berita.backdrop_path}`}
-              alt="Live from space album cover"
-            />
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "row",
-                maxWidth: "90%",
-                borderTopRightRadius: "15em",
-              }}
-            >
-              <Paper elevation={3} sx={{ margin: "1em" }}>
-                <CardContent
-                  sx={{ textAlign: "left", padding: "1em 5em 0em 5em" }}
-                >
-                  <Typography variant="h4">{berita.title}</Typography>
-                  <Typography variant="body1">
-                    {berita.backdrop_path}
-                  </Typography>
-                  <Typography variant="body1">
-                    Penulis : {berita.title}
-                  </Typography>
-                  <br />
-                  <br />
+        <Paper sx={{ backgroundColor: "black", height: "auto" }}>
+          <CardMedia
+            component="img"
+            sx={{
+              width: "100%",
+              marginRight: "-100%",
+              objectFit: "cover",
+              objectPosition: " center",
+              height: "25em",
+            }}
+            image={berita.title}
+            alt={berita.title}
+          />
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              maxWidth: "90%",
+              borderTopRightRadius: "15em",
+            }}
+          >
+            <Paper elevation={3} sx={{ margin: "1em" }}>
+              <CardContent
+                sx={{ textAlign: "left", padding: "1em 5em 0em 5em" }}
+              >
+                <Typography variant="h4">{berita.title}</Typography>
+                <Typography variant="body1">{berita.date}</Typography>
+                <Typography variant="body1">
+                  Penulis : {berita.author}
+                </Typography>
+                <br />
+                <br />
 
-                  <Typography variant="subtile2">
-                    {berita.overview}
-                    {berita.overview}
-                    {berita.overview}
-                    {berita.overview}
-                  </Typography>
-                </CardContent>
-              </Paper>
-            </Box>
-          <Paper elevation={3} sx={{ padding: "2em", margin: "1em 1em 1em 1em" }}>
+                {rows}
+              </CardContent>
+            </Paper>
+          </Box>
+          <Paper
+            elevation={3}
+            sx={{ padding: "2em", margin: "1em 1em 1em 1em" }}
+          >
             <Divider />
             <Box>
               <Typography variant="h5">TERPOPULER</Typography>
@@ -101,7 +107,6 @@ export default function DetailPage() {
           </Paper>
           <Footer />
         </Paper>
-        
       </div>
     </>
   );
