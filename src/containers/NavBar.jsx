@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState } from "react";
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -21,7 +22,7 @@ import MailIcon from "@mui/icons-material/Mail";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import { keluarDariApps } from "../firebase/firebase";
-import { Button } from "@mui/material";
+import { Button, TextField } from "@mui/material";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -48,6 +49,24 @@ const SearchIconWrapper = styled("div")(({ theme }) => ({
   alignItems: "center",
   justifyContent: "center",
 }));
+const SearchBar = ({setSearchQuery}) => (
+  <form>
+    <TextField
+      id="search-bar"
+      className="text"
+      onInput={(e) => {
+        setSearchQuery(e.target.value);
+      }}
+      label="Enter a city name"
+      variant="outlined"
+      placeholder="Search..."
+      size="small"
+    />
+    <IconButton type="submit" aria-label="search">
+      <SearchIcon style={{ fill: "blue" }} />
+    </IconButton>
+  </form>
+);
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: "inherit",

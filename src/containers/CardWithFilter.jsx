@@ -23,6 +23,7 @@ export default class CardWithFilter extends Component {
   componentDidMount() {
     // this.GetDataAPi()
     this.GetDataByAxios();
+    document.getElementById("button").click()
   }
   GetDataByAxios() {
     axios.get(urlAPI).then((res) => {
@@ -46,7 +47,7 @@ export default class CardWithFilter extends Component {
       });
   }
   handleClick = (event) => {
-    const byOrigin = event.target.value;
+
     let filterberita;
     if (event.target.value === "all") {
       filterberita = this.state.arrypost;
@@ -100,7 +101,7 @@ export default class CardWithFilter extends Component {
     ));
     return (
       <div>
-        <Button sx={{margin:'1em'}} variant="outlined" value="all" onClick={this.handleClick}>
+        <Button id="button" sx={{margin:'1em'}} variant="outlined" value="all" onClick={this.handleClick}>
           All
         </Button>
         {ButtonCek}
