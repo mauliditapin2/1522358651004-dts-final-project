@@ -9,7 +9,7 @@ export default function Footer() {
         width: "100%",
         
         padding: "1em",
-        backgroundColor: 'white',
+        backgroundColor: "rgba(255, 255, 255, 0.7)"
       }}
     >
       <Typography variant="h6">

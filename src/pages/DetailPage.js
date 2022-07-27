@@ -56,14 +56,6 @@ export default function DetailPage() {
     <>
     <NavBar/>
       <CardDetail berita={berita} />
-      <Paper elevation={3} sx={{ padding: "2em", margin: "1em 1em 1em 1em" }}>
-          <Divider />
-          <Box>
-            <Typography variant="h5">TERPOPULER</Typography>
-          </Box>
-          <Divider />
-          <SliderItem/>
-        </Paper>
         <Footer/>
     </>
   );

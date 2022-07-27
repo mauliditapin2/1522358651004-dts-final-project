@@ -7,13 +7,13 @@ import {
   Box,
   CardContent,
   CardMedia,
+  Link,
 } from "@mui/material";
 import news from "../apis/news";
 import { useEffect, useState } from "react";
 
 export default function CarouselNews() {
   const [berita, setBerita] = useState([]);
-  const baseUrlForMovie = "https://image.tmdb.org/t/p/original";
   useEffect(() => {
     const fetchDataBerita = async () => {
       try {
@@ -58,17 +58,16 @@ export default function CarouselNews() {
                   paddingTop: "5em",
                   backgroundColor: "rgba(0, 0, 0, 0.8)",
                   color: "white",
-                  height:'20em'
+                  height: "20em",
                 }}
               >
                 <CardContent sx={{ flex: "1 0 auto" }}>
                   <Typography variant="h5" sx={{ marginBottom: "1em" }}>
                     {berita.title}
                   </Typography>
-                  <Typography>
-                    {berita.desc.substring(0, 250)}...
-                  </Typography>
-                  <Button variant="outlined">Selengkapnya</Button>
+                  <Typography>{berita.desc.substring(0, 250)}...</Typography>
+                  <Typography>{berita.time}</Typography>
+
                 </CardContent>
               </Box>
             </Card>

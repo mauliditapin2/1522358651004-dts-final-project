@@ -9,6 +9,7 @@ import {
 import React from "react";
 
 export default function CardDetail(props) {
+  const listItems = props.berita.content;
   return (
     <div>
       <Paper sx={{ backgroundColor: "black", height: "auto" }}>
@@ -20,7 +21,7 @@ export default function CardDetail(props) {
             objectPosition: " center",
             height: "25em",
           }}
-          image={props.berita?.content?.[0]}
+          image={props.berita?.content?.[0] != "" ? props.berita?.content?.[0] : props.berita.thumb}
           alt={props.berita.title}
         />
         <Box
@@ -41,43 +42,9 @@ export default function CardDetail(props) {
               <br />
               <br />
               <Typography variant="subtitle2">
-                {props.berita?.content?.[2]}
+                {listItems}
               </Typography>
-              <iframe
-                width="560"
-                height="315"
-                src={props.berita?.content?.[4]}
-                title="YouTube video player"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
-              ></iframe>
-              <Typography variant="subtitle2">
-                {props.berita?.content?.[4]}
-              </Typography>
-              <Typography variant="subtitle2">
-                {props.berita?.content?.[5]}
-              </Typography>
-              <Typography variant="subtitle2">
-                {props.berita?.content?.[6]}
-              </Typography>
-              <CardMedia
-                component="img"
-                sx={{
-                  width: "100%",
-                  objectFit: "cover",
-                  objectPosition: " center",
-                  height: "25em",
-                }}
-                image={props.berita?.content?.[9]}
-                alt={props.berita.title}
-              />
-              <Typography variant="subtitle2">
-                {props.berita?.content?.[8]}
-              </Typography>
-              <Typography variant="subtitle2">
-                {props.berita?.content?.[9]}
-              </Typography>
+              
             </CardContent>
           </Paper>
         </Box>
