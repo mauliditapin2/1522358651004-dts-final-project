@@ -26,7 +26,7 @@ export default function SliderItem({ type }) {
         const responseDariNews = await news.get(
           // Nah di sini kita tidak perlu menuliskan terlalu panjang lagi
           // `${"/top-headlines?country=id&category=" + type}`
-          "/api/games"
+          `/api/${type}`
         );
         // Jangan lupa set statenya
         // Perhatikan di sini responseDariTMDB ada .data (response schema axios)
@@ -61,7 +61,8 @@ export default function SliderItem({ type }) {
         modules={[Pagination, Navigation, Autoplay]}
         className="mySwiper"
       >
-        {berita.slice(-5).map((berita) => {
+        
+        {berita?.slice(-5)?.map((berita) => {
           return (
             <SwiperSlide key={berita.key}>
               <CardItem berita={berita}/>

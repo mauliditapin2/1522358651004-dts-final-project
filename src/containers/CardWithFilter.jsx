@@ -11,6 +11,7 @@ import Typography from "@mui/material/Typography";
 
 import { Link } from "react-router-dom";
 import { Box } from "@mui/system";
+import { Paper } from "@mui/material";
 const urlAPI = "https://the-lazy-media-api.vercel.app/api/games";
 export default class CardWithFilter extends Component {
   constructor(props) {
@@ -23,7 +24,7 @@ export default class CardWithFilter extends Component {
   componentDidMount() {
     // this.GetDataAPi()
     this.GetDataByAxios();
-    document.getElementById("button").click()
+    
   }
   GetDataByAxios() {
     axios.get(urlAPI).then((res) => {
@@ -56,14 +57,14 @@ export default class CardWithFilter extends Component {
         (berita) => berita.author === event.target.value
       );
     }
-    console.log(event.target.value);
+
     this.setState({ filterberita: filterberita });
   };
 
   render() {
-    let renderA = this.state.arrypost;
+    const renderA = this.state.arrypost;
     const renderAll = this.state.filterberita.map((berita) => (
-      <Box  sx={{padding:'1em', margin:'auto'}}>
+      <Box sx={{ padding: "1em", margin: "auto" }}>
         <Card sx={{ maxWidth: 345 }}>
           <CardMedia
             component="img"
@@ -93,22 +94,35 @@ export default class CardWithFilter extends Component {
         </Card>
       </Box>
     ));
-    const Btn = [...new Set(this.state.arrypost.map(item => item.author))];
-    const ButtonCek = Btn.map((berita,index) => (
-      <Button key={index} sx={{margin:'1em'}} variant="outlined" value={berita} onClick={this.handleClick}>
+    const Btn = [...new Set(this.state.arrypost.map((item) => item.author))];
+    const ButtonCek = Btn.map((berita, index) => (
+      <Button
+        key={index}
+        sx={{ margin: "1em" }}
+        variant="outlined"
+        value={berita}
+        onClick={this.handleClick}
+      >
         {berita}
       </Button>
     ));
     return (
       <div>
-        <Button id="button" sx={{margin:'1em'}} variant="outlined" value="all" onClick={this.handleClick}>
-          All
-        </Button>
-        {ButtonCek}
-        <Box  sx={{ display: "flex", flexWrap: "wrap" }}>
-        {renderAll}
-        </Box>
-      <CardContent/>
+        <Paper elevation={3} sx={{ margin: "2em", padding: "1em" }}>
+          <Typography variant="h6">FILTER BERITA</Typography>
+          <Button
+            sx={{ margin: "1em" }}
+            variant="outlined"
+            value="all"
+            onClick={this.handleClick}
+          >
+            All
+          </Button>
+          {ButtonCek}
+        </Paper>
+
+        <Box sx={{ display: "flex", flexWrap: "wrap" }}>{renderAll}</Box>
+        <CardContent />
       </div>
     );
   }

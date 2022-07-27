@@ -54,32 +54,18 @@ export default function SliderTab() {
           onChange={handleChange}
           aria-label="basic tabs example"
         >
-          <Tab label="technology" {...a11yProps(0)} />
-          <Tab label="business" {...a11yProps(1)} />
-          <Tab label="health" {...a11yProps(2)} />
-          <Tab label="science" {...a11yProps(3)} />
-          <Tab label="sports" {...a11yProps(4)} />
-          <Tab label="entertainment" {...a11yProps(5)} />
+          <Tab label="Games News" {...a11yProps(0)} />
+          <Tab label="Tech News" {...a11yProps(1)} />
+
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        <SliderItem type="technology" />
+        <SliderItem type="games" />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <SliderItem type="business" />
+        <SliderItem type="tech" />
       </TabPanel>
-      <TabPanel value={value} index={2}>
-        <SliderItem type="health" />
-      </TabPanel>
-      <TabPanel value={value} index={3}>
-        <SliderItem type="science" />
-      </TabPanel>
-      <TabPanel value={value} index={4}>
-        <SliderItem type="sports" />
-      </TabPanel>
-      <TabPanel value={value} index={5}>
-        <SliderItem type="entertainment" />
-      </TabPanel>
+
     </Box>
   );
 }

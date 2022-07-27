@@ -8,10 +8,20 @@ import {
   CardActions,
   CardContent,
   CardMedia,
-  Link,
+  FilledInput,
+  FormControl,
+  InputAdornment,
   Paper,
   Typography,
 } from "@mui/material";
+import { styled, alpha } from "@mui/material/styles";
+
+import InputBase from "@mui/material/InputBase";
+
+import { Link } from "react-router-dom";
+import SearchIcon from "@mui/icons-material/Search";
+import { TextField } from "@mui/material";
+
 export default function CardWithSearch() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -67,83 +77,75 @@ export default function CardWithSearch() {
     return <div>Loading...</div>;
   } else {
     return (
-      <>
+      <div
+        style={{
+          backgroundImage: `url("https://wallpapercave.com/wp/wp9378601.jpg")`,
+        }}
+      >
         <NavBar />
-        <div className="wrapper">
-          <div className="search-wrapper">
-            <label htmlFor="search-form">
-              <input
-                type="search"
-                name="search-form"
-                id="search-form"
-                className="search-input"
-                placeholder="Search for..."
-                value={q}
-                onChange={(e) => setQ(e.target.value)}
-              />
-              <span className="sr-only">Search countries here</span>
-            </label>
-            <div className="select">
-              <select
-                onChange={(e) => {
-                  setFilterParam(e.target.value);
-                }}
-                className="custom-select"
-                aria-label="Filter Countries By Countries"
-              >
-                <option value="All">Filter By Region</option>
-                <option value="Kiki Rimadina">Kiki Rimadina</option>
-                <option value="Jordy Leonardo">Jordy Leonardo</option>
-                <option value="Asia">Asia</option>
-                <option value="Europe">Europe</option>
-                <option value="Oceania">Oceania</option>
-              </select>
-              <span className="focus"></span>
-            </div>
-          </div>
-          <Paper
-            elevation={3}
-            sx={{ display: "flex", flexWrap: "wrap", margin: "1em" }}
-          >
-            {search(items).map((item, index) => (
-              <>
-                <Box sx={{ margin: "auto" }}>
-                  <Card key={index} sx={{ maxWidth: 345, margin: "1em" }}>
-                    <CardMedia
-                      component="img"
-                      alt="green iguana"
-                      height="140"
-                      image={item.thumb}
-                    />
-                    <CardContent sx={{ height: "auto" }}>
-                      <Typography gutterBottom component="div">
-                        {item.title}
-                      </Typography>
-                      <Typography variant="body2" color="text.secondary">
-                        {item.desc.substring(0, 190)}...
-                      </Typography>
-                    </CardContent>
-                    <CardActions
-                      sx={{ textAlign: "center", alignContent: "center" }}
-                    >
-                      <Button size="small" variant="outlined">
-                        {" "}
-                        <Link
-                          style={{ textDecoration: "none" }}
-                          to={`/detail/${item.key}`}
-                        >
-                          Selengkapnya
-                        </Link>
-                      </Button>
-                    </CardActions>
-                  </Card>
-                </Box>
-              </>
-            ))}
+        <div style={{ paddingTop: "5em" }}>
+          <Paper sx={{ padding: "1em" }}>
+            <Box sx={{ margin: "1em" }}>
+              <FormControl fullWidth sx={{ m: 1 }} variant="filled">
+                <TextField
+                  id="outlined-basic"
+                  label="Cari Judul Berita"
+                  variant="outlined"
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start"><SearchIcon/></InputAdornment>
+                    ),
+                  }}
+                  value={q}
+                  onChange={(e) => setQ(e.target.value)}
+                />
+              </FormControl>
+            </Box>
+
+            <Paper
+              elevation={3}
+              sx={{ display: "flex", flexWrap: "wrap", margin: "1em" }}
+            >
+              {search(items).map((item, index) => (
+                <>
+                  <Box sx={{ margin: "auto" }}>
+                    <Card key={index} sx={{ maxWidth: 345, margin: "1em" }}>
+                      <CardMedia
+                        component="img"
+                        alt="green iguana"
+                        height="140"
+                        image={item.thumb}
+                      />
+                      <CardContent sx={{ height: "auto" }}>
+                        <Typography gutterBottom component="div">
+                          {item.title}
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                          {item.desc.substring(0, 190)}...
+                        </Typography>
+                      </CardContent>
+                      <CardActions
+                        sx={{ textAlign: "center", alignContent: "center" }}
+                      >
+                        <Button size="small" variant="outlined">
+                          {" "}
+                          <Link
+                            style={{ textDecoration: "none" }}
+                            to={`/detail/${item.key}`}
+                          >
+                            Selengkapnya
+                          </Link>
+                        </Button>
+                      </CardActions>
+                    </Card>
+                  </Box>
+                </>
+              ))}
+            </Paper>
           </Paper>
         </div>
         <Footer />
-      </>
+      </div>
     );
   }
 }
