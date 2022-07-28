@@ -9,20 +9,14 @@ import { keluarDariApps } from "../firebase/firebase";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
+
 import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
+
 import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
-import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
-import { Newspaper } from "@mui/icons-material";
 
-const pages = ["Semua Berita"];
-const settings = ["Login"];
+import { LoginOutlined, LogoutOutlined, Newspaper } from "@mui/icons-material";
 
 export default function NavBar() {
   const [user] = useAuthState(auth);
@@ -50,64 +44,9 @@ export default function NavBar() {
     setAnchorElUser(null);
   };
   return (
-    <AppBar position="static">
+    <AppBar position="static" sx={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Newspaper sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            News On Fire
-          </Typography>
-
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "left",
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: "block", md: "none" },
-              }}
-            >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
           <Newspaper sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
           <Link to="/">
             <Typography
@@ -131,45 +70,73 @@ export default function NavBar() {
           </Link>
 
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                {page}
-              </Button>
-            ))}
+            <Button
+              onClick={handleCloseNavMenu}
+              sx={{ my: 2, color: "white", display: "block" }}
+            >
+              <Link to="/">
+                <Typography
+                  sx={{
+                    textDecorationColor: "none",
+                    color: "white",
+                    textDecorationLine: "none",
+                    fontFamily: "monospace",
+                  }}
+                >
+                  Beranda
+                </Typography>
+              </Link>
+            </Button>
+            <Button
+              onClick={handleCloseNavMenu}
+              sx={{ my: 2, color: "white", display: "block" }}
+            >
+              <Link to="/search">
+                <Typography
+                  sx={{
+                    textDecorationColor: "none",
+                    color: "white",
+                    textDecorationLine: "none",
+                    fontFamily: "monospace",
+                  }}
+                >
+                  Cari Berita
+                </Typography>
+              </Link>
+            </Button>
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
+          <Box sx={{ flexGrow: 0, display: "flex" }}>
+            {user != null ? (
+              <Typography
+                variant="h8"
+                noWrap
+                component="div"
+                sx={{
+                  display: { xs: "none", sm: "block" },
+                  textTransform: "uppercase",
+                  marginTop: "12px",
+                  textDecorationColor: "none",
+                  color: "white",
+                  textDecorationLine: "none",
+                  fontFamily: "monospace",
+                }}
+              >
+                <Button onClick={buttonLogoutOnClickHandler}>
+                  {user.email}
+                  <LogoutOutlined />
+                </Button>
+              </Typography>
+            ) : (
+              <Link
+                to="/Login"
+                style={{ textDecoration: "none", color: "white" }}
+              >
+                <Tooltip title="Open settings">
+                  <LoginOutlined onClick={handleOpenUserMenu} sx={{ p: 0 }} />
+                </Tooltip>
+              </Link>
+            )}
           </Box>
         </Toolbar>
       </Container>

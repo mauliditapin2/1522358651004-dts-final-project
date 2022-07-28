@@ -25,7 +25,7 @@ export default function HomePage() {
             <SliderTab />
           </Box>
         </Paper>
-        <Paper elevation={3} sx={{ margin: "1em",backgroundColor: "rgba(255, 255, 255, 0.7)" }}>
+        <Paper elevation={3} sx={{ margin: "1em",backgroundColor: "rgba(255, 255, 255, 0.7)", padding:'1em' }}>
           <CardWithFilter />
         </Paper>
         <Footer />

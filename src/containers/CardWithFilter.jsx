@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { render } from "react-dom";
-import news from "../apis/news";
+
 import axios from "axios";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
