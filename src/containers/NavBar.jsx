@@ -44,7 +44,7 @@ export default function NavBar() {
     setAnchorElUser(null);
   };
   return (
-    <AppBar position="static" sx={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}>
+    <AppBar position="absolute" sx={{ backgroundColor: "rgba(255, 255, 255, 0.5)" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Newspaper sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
@@ -78,7 +78,7 @@ export default function NavBar() {
                 <Typography
                   sx={{
                     textDecorationColor: "none",
-                    color: "white",
+                    color: "black",
                     textDecorationLine: "none",
                     fontFamily: "monospace",
                   }}
@@ -95,7 +95,7 @@ export default function NavBar() {
                 <Typography
                   sx={{
                     textDecorationColor: "none",
-                    color: "white",
+                    color: "black",
                     textDecorationLine: "none",
                     fontFamily: "monospace",
                   }}

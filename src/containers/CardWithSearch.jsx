@@ -83,7 +83,7 @@ export default function CardWithSearch() {
         }}
       >
         <NavBar />
-        <div style={{ paddingTop: "1em" }}>
+        <div style={{ padding: "5em 1em 1em 1em" }}>
           <Paper sx={{ padding: "1em",backgroundColor: "rgba(255, 255, 255, 0.7)" }}>
             <Box sx={{ margin: "1em" }}>
               <FormControl fullWidth sx={{ m: 1 }} variant="filled">
@@ -108,7 +108,7 @@ export default function CardWithSearch() {
             >
               {search(items).map((item, index) => (
                 <>
-                  <Box sx={{ margin: "auto",backgroundColor: "rgba(255, 255, 255, 0.9)" }}>
+                  <Box sx={{margin: '1em', margin: "auto",backgroundColor: "rgba(255, 255, 255, 0.9)" }}>
                     <Card key={index} sx={{ maxWidth: 345, margin: "1em" }}>
                       <CardMedia
                         component="img"
