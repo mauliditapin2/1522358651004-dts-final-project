@@ -10,7 +10,7 @@ export default function LoginPage() {
           width: "100%",
           margin: "auto",
           backgroundImage: `url("https://wallpapercave.com/wp/wp9378601.jpg")`,
-
+          paddingTop:'2em',
           position: "fixed",
           backgroundRepeat: 'no-repeat',
           backgroundSize:'cover'

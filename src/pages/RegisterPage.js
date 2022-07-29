@@ -7,7 +7,7 @@ export default function RegisterPage() {
     <div style={{
         width: "100%",
 
-          margin: "auto",
+          margin: "auto",paddingTop:'2em',
           backgroundImage: `url("https://wallpapercave.com/wp/wp9378601.jpg")`,
           position: "fixed",
           backgroundRepeat: 'no-repeat',
