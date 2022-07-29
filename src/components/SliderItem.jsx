@@ -6,18 +6,10 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Pagination, Navigation, Autoplay } from "swiper";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-
-import { Link } from "react-router-dom";
 import CardItem from "./CardItem";
 
 export default function SliderItem({ type }) {
-  const baseUrlForMovie = "https://image.tmdb.org/t/p/original";
+  
   const [berita, setBerita] = useState([]);
   useEffect(() => {
     const fetchDataBerita = async () => {
@@ -56,13 +48,13 @@ export default function SliderItem({ type }) {
         slidesPerGroup={3}
         loop={true}
         autoplay
-        loopFillGroupWithBlank={true}
+        
         navigation={true}
         modules={[Pagination, Navigation, Autoplay]}
         className="mySwiper"
       >
         
-        {berita?.slice(-5)?.map((berita) => {
+        {berita.map((berita) => {
           return (
             <SwiperSlide key={berita.key}>
               <CardItem berita={berita}/>

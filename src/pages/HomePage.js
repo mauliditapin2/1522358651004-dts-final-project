@@ -5,7 +5,7 @@ import CarouselNews from "../containers/CarouselNews";
 import { Box, Paper } from "@mui/material";
 import SliderTab from "../components/SliderTab";
 import Footer from "../components/Footer";
-import CardContent from "../containers/CardContent";
+//import CardContent from "../containers/CardContent";
 import CardWithFilter from "../containers/CardWithFilter";
 export default function HomePage() {
   return (

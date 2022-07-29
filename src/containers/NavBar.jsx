@@ -18,9 +18,7 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 
-import { Home, LoginOutlined, Newspaper } from "@mui/icons-material";
-
-const pages = ["Products", "Pricing", "Blog"];
+import {  LoginOutlined } from "@mui/icons-material";
 
 export default function NavBar() {
   const [user] = useAuthState(auth);
@@ -62,7 +60,7 @@ export default function NavBar() {
             href=""
             sx={{
               mr: 2,
-              display: { xs: "none", md: "flex" },
+              display: { xs: "none", md: "none" },
               flexGrow: 1,
               fontFamily: "monospace",
               fontWeight: 700,
@@ -107,10 +105,7 @@ export default function NavBar() {
               <MenuItem onClick={handleCloseNavMenu}>
                 <Link
                   to="/"
-                  sx={{
-                    textDecorationColor: " none",
-                    textDecorationLine: "none",
-                  }}
+                  style={{textDecoration: 'none'}}
                 >
                   <Typography
                     sx={{
@@ -127,10 +122,7 @@ export default function NavBar() {
               <MenuItem onClick={handleCloseNavMenu}>
                 <Link
                   to="/search"
-                  sx={{
-                    textDecorationColor: " none",
-                    textDecorationLine: "none",
-                  }}
+                  style={{textDecoration: 'none'}}
                 >
                   <Typography
                     sx={{
@@ -146,22 +138,26 @@ export default function NavBar() {
               </MenuItem>
             </Menu>
           </Box>
-          <Link to="/">
-            <Home sx={{ display: { xs: "none", md: "none" }, mr: 1 }} />
+          <Link
+            to="/"
+            style={{textDecoration: 'none'}}
+          >
+            {/* <Home sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} /> */}
             <Typography
-              variant="body1"
+              variant="h6"
               noWrap
               component="a"
               href=""
               sx={{
                 mr: 2,
-                display: { xs: "none", md: "none" },
+                display: { xs: "none", md: "flex" },
                 flexGrow: 1,
                 fontFamily: "monospace",
                 fontWeight: 700,
                 letterSpacing: ".3rem",
-                color: "inherit",
-                textDecoration: "none",
+                color: "black",
+                textDecorationColor: " none",
+                textDecorationLine: "none",
               }}
             >
               News On Fire
@@ -180,10 +176,7 @@ export default function NavBar() {
             >
               <Link
                 to="/"
-                sx={{
-                  textDecorationColor: " none",
-                  textDecorationLine: "none",
-                }}
+                style={{textDecoration: 'none'}}
               >
                 <Typography
                   sx={{
@@ -209,10 +202,7 @@ export default function NavBar() {
             >
               <Link
                 to="/search"
-                sx={{
-                  textDecorationColor: " none",
-                  textDecorationLine: "none",
-                }}
+                style={{textDecoration: 'none'}}
               >
                 <Typography
                   sx={{

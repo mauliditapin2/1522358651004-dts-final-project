@@ -29,9 +29,7 @@ export default function CardWithSearch() {
   const [q, setQ] = useState("");
   const [searchParam] = useState(["author", "title"]);
   const [filterParam, setFilterParam] = useState(["All"]);
-  // Note: the empty deps array [] means
-  // this useEffect will run once
-  // similar to componentDidMount()
+
   useEffect(() => {
     fetch("https://the-lazy-media-api.vercel.app/api/games")
       .then((res) => res.json())
@@ -40,9 +38,7 @@ export default function CardWithSearch() {
           setIsLoaded(true);
           setItems(result);
         },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
+        
         (error) => {
           setIsLoaded(true);
           setError(error);
@@ -84,7 +80,9 @@ export default function CardWithSearch() {
       >
         <NavBar />
         <div style={{ padding: "5em 1em 1em 1em" }}>
-          <Paper sx={{ padding: "1em",backgroundColor: "rgba(255, 255, 255, 0.7)" }}>
+          <Paper
+            sx={{ padding: "1em", backgroundColor: "rgba(255, 255, 255, 0.7)" }}
+          >
             <Box sx={{ margin: "1em" }}>
               <FormControl fullWidth sx={{ m: 1 }} variant="filled">
                 <TextField
@@ -93,7 +91,9 @@ export default function CardWithSearch() {
                   variant="outlined"
                   InputProps={{
                     startAdornment: (
-                      <InputAdornment position="start"><SearchIcon/></InputAdornment>
+                      <InputAdornment position="start">
+                        <SearchIcon />
+                      </InputAdornment>
                     ),
                   }}
                   value={q}
@@ -104,11 +104,22 @@ export default function CardWithSearch() {
 
             <Paper
               elevation={3}
-              sx={{ display: "flex", flexWrap: "wrap", margin: "1em",backgroundColor: "rgba(255, 255, 255, 0.8)" }}
+              sx={{
+                display: "flex",
+                flexWrap: "wrap",
+                margin: "1em",
+                backgroundColor: "rgba(255, 255, 255, 0.8)",
+              }}
             >
               {search(items).map((item, index) => (
                 <>
-                  <Box sx={{margin: '1em', margin: "auto",backgroundColor: "rgba(255, 255, 255, 0.9)" }}>
+                  <Box
+                    sx={{
+                      margin: "1em",
+                      margin: "auto",
+                      backgroundColor: "rgba(255, 255, 255, 0.9)",
+                    }}
+                  >
                     <Card key={index} sx={{ maxWidth: 345, margin: "1em" }}>
                       <CardMedia
                         component="img"
