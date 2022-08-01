@@ -8,15 +8,11 @@ import {
   CardActions,
   CardContent,
   CardMedia,
-  FilledInput,
   FormControl,
   InputAdornment,
   Paper,
   Typography,
 } from "@mui/material";
-import { styled, alpha } from "@mui/material/styles";
-
-import InputBase from "@mui/material/InputBase";
 
 import { Link } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
@@ -116,7 +112,6 @@ export default function CardWithSearch() {
                   <Box
                     sx={{
                       margin: "1em",
-                      margin: "auto",
                       backgroundColor: "rgba(255, 255, 255, 0.9)",
                     }}
                   >

@@ -13,6 +13,7 @@ import { Box } from "@mui/system";
 import { Paper } from "@mui/material";
 const urlAPI = "https://the-lazy-media-api.vercel.app/api/games";
 export default class CardWithFilter extends Component {
+  
   constructor(props) {
     super(props);
     this.state = {
@@ -46,22 +47,56 @@ export default class CardWithFilter extends Component {
         });
       });
   }
+  
   handleClick = (event) => {
-
+    
     let filterberita;
     if (event.target.value === "all") {
       filterberita = this.state.arrypost;
+      document.getElementById("tes").style.display = "none";
+
     } else {
       filterberita = this.state.arrypost.filter(
         (berita) => berita.author === event.target.value
       );
+      document.getElementById("tes").style.display = "none";
     }
 
     this.setState({ filterberita: filterberita });
   };
 
   render() {
-    const renderA = this.state.arrypost;
+    const renderA = this.state.arrypost.map((berita) => (
+      <Box sx={{ padding: "1em", margin: "auto" }}>
+        <Card sx={{ maxWidth: 345 }}>
+          <CardMedia
+            component="img"
+            alt="green iguana"
+            height="140"
+            image={berita.thumb}
+          />
+          <CardContent sx={{ height: "auto" }}>
+            <Typography gutterBottom component="div">
+              {berita.title}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              {berita.desc.substring(0, 190)}...
+            </Typography>
+          </CardContent>
+          <CardActions sx={{ textAlign: "center", alignContent: "center" }}>
+            <Button size="small" variant="outlined">
+              {" "}
+              <Link
+                style={{ textDecoration: "none" }}
+                to={`/detail/${berita.key}`}
+              >
+                Selengkapnya
+              </Link>
+            </Button>
+          </CardActions>
+        </Card>
+      </Box>
+    ));
     const renderAll = this.state.filterberita.map((berita) => (
       <Box sx={{ padding: "1em", margin: "auto" }}>
         <Card sx={{ maxWidth: 345 }}>
@@ -105,6 +140,7 @@ export default class CardWithFilter extends Component {
         {berita}
       </Button>
     ));
+    
     return (
       <div>
         <Paper elevation={3} sx={{ margin: "2em", padding: "1em" }}>
@@ -119,7 +155,9 @@ export default class CardWithFilter extends Component {
           </Button>
           {ButtonCek}
         </Paper>
-
+        <div id="tes">
+        <Box sx={{ display: "flex", flexWrap: "wrap" }}>{renderA}</Box>
+        </div>
         <Box sx={{ display: "flex", flexWrap: "wrap" }}>{renderAll}</Box>
         <CardContent />
       </div>
